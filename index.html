@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Limit</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="input-box">
+        <textarea placeholder="Add your title....." required></textarea>
+        <span class="title">
+            Title
+        </span>
+
+        <div class="characters">
+            <span class="signal-num">0</span>
+            <span class="limit-num">/100</span>
+        </div>
+    </div>
+
+    <script>
+        let inputBox = document.querySelector('.input-box'),
+            textarea = inputBox.querySelector('textarea'),
+            signalNum = inputBox.querySelector('.signal-num');
+
+        textarea.addEventListener("keyup", e => {
+            // let characterLength = e.target.value.length;
+            let characterLength = textarea.value.length;
+            signalNum.innerText = characterLength;
+            (characterLength > 0) ? inputBox.classList.add("active") : inputBox.classList.remove("active");
+
+            (characterLength > 100) ? inputBox.classList.add("error") : inputBox.classList.remove("error");
+        })
+    </script>
+</body>
+
+</html>
